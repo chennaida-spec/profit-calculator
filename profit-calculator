@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Profit Calculator</title>
+</head>
+<body style="font-family:sans-serif;background:#00a8e8;padding:50px;text-align:center">
+<div style="background:white;padding:30px;border-radius:20px;max-width:400px;margin:0 auto">
+<h2>Profit Calculator</h2>
+<input id="cost" placeholder="Cost 成本" style="width:100%;padding:10px;margin:5px 0">
+<input id="price" placeholder="Price 售价" style="width:100%;padding:10px;margin:5px 0">
+<input id="shipping" placeholder="Shipping 运费" style="width:100%;padding:10px;margin:5px 0">
+<input id="fee" placeholder="Platform Fee % 平台费" style="width:100%;padding:10px;margin:5px 0">
+<button id="b" style="width:100%;padding:15px;background:#00a8e8;color:white;border:none;border-radius:10px;cursor:pointer;margin-top:10px">Calculate</button>
+<div id="r" style="margin-top:20px;padding:20px;background:#e8f5e9;border-radius:10px">
+<p><b>Profit:</b> <span id="profit">-</span></p>
+<p><b>Margin:</b> <span id="margin">-</span></p>
+</div>
+</div>
+<script>
+document.getElementById('b').onclick=function(){
+var cost=parseFloat(document.getElementById('cost').value)||0;
+var price=parseFloat(document.getElementById('price').value)||0;
+var shipping=parseFloat(document.getElementById('shipping').value)||0;
+var fee=parseFloat(document.getElementById('fee').value)||0;
+var feeAmount=price*(fee/100);
+var profit=price-cost-shipping-feeAmount;
+var margin=price>0?(profit/price*100):0;
+document.getElementById('profit').innerText='$'+profit.toFixed(2);
+document.getElementById('margin').innerText=margin.toFixed(1)+'%';
+};
+</script>
+</body>
+</html>
